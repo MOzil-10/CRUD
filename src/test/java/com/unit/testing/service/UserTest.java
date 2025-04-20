@@ -29,7 +29,10 @@ public class UserTest {
         user.setAddress("123 Main st");
 
         savedUser = userRepository.save(user);
+        System.out.println("Saved user : " + savedUser);
+
     }
+
     @Test
     @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void testCreateUser() {
@@ -38,6 +41,7 @@ public class UserTest {
     }
 
     @Test
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void testGetUserById() {
         UserEntity foundUser = userRepository.findById(savedUser.getUserId()).orElse(null);
 
@@ -48,6 +52,7 @@ public class UserTest {
     }
 
     @Test
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void testUpdateUser() {
         savedUser.setUserFullName("Bukayo Saka");
         savedUser.setEmail("saka@gmail.com");
@@ -60,6 +65,7 @@ public class UserTest {
     }
 
     @Test
+    @Transactional(propagation = Propagation.NOT_SUPPORTED)
     void testDeleteUser() {
         userRepository.delete(savedUser);
 
